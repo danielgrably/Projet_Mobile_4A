@@ -14,4 +14,7 @@
     <item name="eightLine_bis" type="id" />
     <item name="ninthLine_bis" type="id" />
     <item name="tenthLine_bis" type="id" />
+    <item name="textView" type="id" />
+    <item name="createur_button" type="id" />
+    <item name="calendrier_button" type="id" />
 </resources>

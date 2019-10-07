@@ -49,6 +49,7 @@ public class SecondActivity extends Activity {
         // use a linear layout manager
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+        //recyclerView.setLayoutManager(new GridLayoutManager(this,2));
         mAdapter = new MyAdapter(calendarList);
         recyclerView.setAdapter(mAdapter);
         attachSwipeListener();

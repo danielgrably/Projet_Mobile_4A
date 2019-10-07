@@ -1,6 +1,8 @@
 package com.example.projet_mobile_4a.Controler;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.example.projet_mobile_4a.Model.Calendar;
@@ -8,7 +10,9 @@ import com.example.projet_mobile_4a.Model.RestCalendarResponse;
 import com.example.projet_mobile_4a.View.SecondActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 import retrofit2.Call;
@@ -19,8 +23,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Cont {
 
+    private static final String PREFS = "PREFS";
+    private static final String LIST_KEY = "list";
+
+
     private List<Calendar> calendarList;
     private SecondActivity view;
+    private SharedPreferences sharedPreferences;
+
 
     public Cont(SecondActivity view) {
         this.view = view;
@@ -29,7 +39,7 @@ public class Cont {
     public void onCreate() {
 
         //Créer objet Gson
-        Gson gson = new GsonBuilder()
+        final Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
 
@@ -39,25 +49,36 @@ public class Cont {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
-        RestCalendarAPI restCalendarAPI = retrofit.create(RestCalendarAPI.class);
-        Call<RestCalendarResponse> call = restCalendarAPI.getListCalendar();
-        call.enqueue(new Callback<RestCalendarResponse>() {
-            @Override
-            public void onResponse(Call<RestCalendarResponse> call, Response<RestCalendarResponse> response) {
-                RestCalendarResponse restCalendarResponse = response.body();
-                calendarList = restCalendarResponse.getItems();
-                view.showList(calendarList);
-            }
+        sharedPreferences = view.getBaseContext().getSharedPreferences(PREFS, Context.MODE_PRIVATE);
 
-            @Override
-            public void onFailure(Call<RestCalendarResponse> call, Throwable t) {
-                Log.d("ERROR", "Api Error");
-            }
-        });
+        if (sharedPreferences.contains(LIST_KEY)) {
+            String listJson = sharedPreferences.getString(LIST_KEY, null);
+            Type listType = new TypeToken<List<Calendar>>() {
+            }.getType();
+            List<Calendar> list = gson.fromJson(listJson, listType);
+            view.showList(list);
+        } else {
+            RestCalendarAPI restCalendarAPI = retrofit.create(RestCalendarAPI.class);
+            Call<RestCalendarResponse> call = restCalendarAPI.getListCalendar();
+            call.enqueue(new Callback<RestCalendarResponse>() {
+                @Override
+                public void onResponse(Call<RestCalendarResponse> call, Response<RestCalendarResponse> response) {
+                    RestCalendarResponse restCalendarResponse = response.body();
+                    calendarList = restCalendarResponse.getItems();
+                    view.showList(calendarList);
 
+                    sharedPreferences
+                            .edit()
+                            .putString(LIST_KEY, gson.toJson(calendarList))
+                            .apply();
+                }
 
-
+                @Override
+                public void onFailure(Call<RestCalendarResponse> call, Throwable t) {
+                    Log.d("ERROR", "Api Error");
+                }
+            });
+        }
     }
-
 }
 
