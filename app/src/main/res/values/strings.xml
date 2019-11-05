@@ -7,4 +7,7 @@
     <string name="prochains_chabbats">Montées chabbat</string>
     <string name="calendrier_et_horaires">Calendrier et horaires</string>
     <string name="cr_ateur">createur</string>
+    <string name="menu">Menu</string>
+    <string name="horaires">Horaires</string>
+    <string name="chabat">Chabbat</string>
 </resources>
