@@ -4,14 +4,18 @@ package com.example.projet_mobile_4a.View;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabItem;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.support.design.widget.TabLayout;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.example.projet_mobile_4a.Controler.PageAdapter;
 import com.example.projet_mobile_4a.R;
 
 
@@ -31,9 +35,20 @@ public class MainActivity extends AppCompatActivity {
         tabs.addTab(tabs.newTab().setText("Tab 2"));
         tabs.addTab(tabs.newTab().setText("Tab 3"));
 */
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(getResources().getString(R.string.app_name));
+
+        TabLayout tabLayout = findViewById(R.id.tablayout);
+        TabItem tabMenu = findViewById(R.id.tabMenu);
+        TabItem tabHoraires = findViewById(R.id.tabHoraires);
+        TabItem tabChabbat = findViewById(R.id.tabChabbat);
+
+        ViewPager viewPager = findViewById(R.id.viewPager);
+        PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(pageAdapter);
+
         setSupportActionBar(toolbar);
-        TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+        TextView mTitle = toolbar.findViewById(R.id.toolbar_title);
 
         setSupportActionBar(toolbar);
         mTitle.setText(toolbar.getTitle());
