@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.projet_mobile_4a.R;
 
@@ -33,6 +35,11 @@ public class MenuFragment extends Fragment {
 
     public MenuFragment() {
         // Required empty public constructor
+    }
+
+    public void createur(View view){
+        Toast mon_nom = Toast.makeText(getActivity(), "Daniel Elgrably",Toast.LENGTH_SHORT);
+        mon_nom.show();
     }
 
     /**
@@ -67,7 +74,16 @@ public class MenuFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         setHasOptionsMenu(true);
-        return inflater.inflate(R.layout.fragment_menu, container, false);
+        View view = inflater.inflate(R.layout.fragment_menu, container, false);
+        Button button = (Button) view.findViewById(R.id.createur_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    Toast mon_nom = Toast.makeText(getActivity(), "Daniel Elgrably",Toast.LENGTH_SHORT);
+                    mon_nom.show();
+            }
+        });
+        return view;
     }
 
  /*   @Override

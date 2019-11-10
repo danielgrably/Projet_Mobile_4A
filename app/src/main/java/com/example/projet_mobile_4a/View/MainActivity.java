@@ -161,7 +161,6 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Calendar");
-        //toolbar.setTitle("Calendar");
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 
@@ -182,21 +181,21 @@ public class MainActivity extends AppCompatActivity {
                 viewPager.setCurrentItem(tab.getPosition());
                 if (tab.getPosition() == 1) {
                     toolbar.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
-                            R.color.colorAccent));
+                            android.R.color.holo_orange_light));
                     tabLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
-                            R.color.colorAccent));
+                            android.R.color.holo_orange_light));
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this,
-                                R.color.colorAccent));
+                                android.R.color.holo_orange_light));
                     }
                 } else if (tab.getPosition() == 2) {
                     toolbar.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
-                            android.R.color.darker_gray));
+                            R.color.or));
                     tabLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
-                            android.R.color.darker_gray));
+                            R.color.or));
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this,
-                                android.R.color.darker_gray));
+                                R.color.or));
                     }
                 } else {
                     toolbar.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
@@ -223,4 +222,5 @@ public class MainActivity extends AppCompatActivity {
           viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
     }
+
 }
