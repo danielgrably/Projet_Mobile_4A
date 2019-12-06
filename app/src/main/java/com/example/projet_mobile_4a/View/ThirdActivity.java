@@ -32,7 +32,7 @@ public class ThirdActivity extends Activity {
         setContentView(R.layout.activity_third);
         recyclerView = findViewById(R.id.calendar_recycler_view);
 
-        controlller = new Cont_bis(this);
+       // controlller = new Cont_bis(this);
         controlller.onCreate();
     }
 

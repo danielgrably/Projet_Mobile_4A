@@ -6,6 +6,15 @@
     tools:context=".View.HorairesFragment"
     android:orientation="vertical">
 
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/horaires_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        />
+<!--
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,13 +24,6 @@
         android:textSize="30sp"
         android:textColor="@color/or"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/calendar_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        />
-<!--
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
