@@ -1,7 +1,6 @@
 package com.example.projet_mobile_4a.View;
 
 import android.app.Activity;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +10,6 @@ import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.projet_mobile_4a.Controler.Cont;
 import com.example.projet_mobile_4a.Controler.MyAdapter;
 import com.example.projet_mobile_4a.Model.Calendar;
-import com.example.projet_mobile_4a.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +23,7 @@ public class SecondActivity extends Activity {
     private List<Calendar> calendarList = new ArrayList<>();
 
 
-    @Override
+   /* @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
@@ -33,7 +31,7 @@ public class SecondActivity extends Activity {
 
         // controlller = new Cont_bis(this);
         controlller.onCreate();
-    }
+    }*/
 
 
     @Override
