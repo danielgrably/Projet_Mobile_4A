@@ -30,9 +30,6 @@ public class SecondActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         recyclerView = findViewById(R.id.calendar_recycler_view);
-
-        controlller = new Cont(this);
-        controlller.onCreate();
     }
 
 
