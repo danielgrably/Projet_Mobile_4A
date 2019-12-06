@@ -3,9 +3,11 @@
     <color name="colorPrimary">#795548</color>
     <color name="colorPrimaryDark">#5D4037</color>
     <color name="colorAccent">#CDDC39</color>
-    <!--<color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#EBDB76</color>
-    <color name="colorAccent">#D81B60</color>
-   --> <color name="or">#FFD700</color>
+    <color name="bleu">#3550F8</color>
+    <color name="beige">#EBDB76</color>
+    <color name="pourpre">#D81B60</color>
+    <color name="or">#FFD700</color>
     <color name="noir">#000</color>
+    <color name="blanc">#FFF</color>
+    <color name="holo_orange_light">#ffffbb33</color>
 </resources>

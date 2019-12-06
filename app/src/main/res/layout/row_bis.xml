@@ -23,7 +23,7 @@
         android:layout_toEndOf="@drawable/vignette"
         android:gravity="center_vertical"
         android:textSize="18sp"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/blanc"
         app:layout_constraintBottom_toBottomOf="parent"
 
         tools:ignore="SmallSp" />
@@ -41,7 +41,7 @@
         android:layout_toEndOf="@+id/firstLine_bis"
         android:ellipsize="marquee"
         android:textSize="14sp"
-        android:textColor="@color/colorAccent"/>
+        android:textColor="@color/blanc"/>
 
 
     <TextView
@@ -56,7 +56,7 @@
         android:layout_toEndOf="@+id/firstLine_bis"
         android:ellipsize="marquee"
         android:textSize="14sp"
-        android:textColor="@color/colorAccent"/>
+        android:textColor="@color/blanc"/>
 
 
     <TextView
@@ -71,7 +71,7 @@
         android:layout_toEndOf="@+id/firstLine_bis"
         android:ellipsize="marquee"
         android:textSize="14sp"
-        android:textColor="@color/colorAccent"/>
+        android:textColor="@color/blanc"/>
 
     <TextView
         android:id="@+id/fifthLine_bis"
@@ -85,7 +85,7 @@
         android:layout_toEndOf="@+id/firstLine_bis"
         android:ellipsize="marquee"
         android:textSize="14sp"
-        android:textColor="@color/colorAccent"/>
+        android:textColor="@color/blanc"/>
 
 
     <TextView
@@ -100,7 +100,7 @@
         android:layout_toEndOf="@+id/firstLine_bis"
         android:ellipsize="marquee"
         android:textSize="14sp"
-        android:textColor="@color/colorAccent"/>
+        android:textColor="@color/blanc"/>
 
 
     <TextView
@@ -115,7 +115,7 @@
         android:layout_toEndOf="@+id/firstLine_bis"
         android:ellipsize="marquee"
         android:textSize="14sp"
-        android:textColor="@color/colorAccent"/>
+        android:textColor="@color/blanc"/>
 
 
     <TextView
@@ -130,7 +130,7 @@
         android:layout_toEndOf="@+id/firstLine_bis"
         android:ellipsize="marquee"
         android:textSize="14sp"
-        android:textColor="@color/colorAccent"/>
+        android:textColor="@color/blanc"/>
 
 
     <TextView
@@ -145,7 +145,7 @@
         android:layout_toEndOf="@+id/firstLine_bis"
         android:ellipsize="marquee"
         android:textSize="14sp"
-        android:textColor="@color/colorAccent"/>
+        android:textColor="@color/blanc"/>
 
 
     <TextView
@@ -160,7 +160,7 @@
         android:layout_toEndOf="@+id/firstLine_bis"
         android:ellipsize="marquee"
         android:textSize="14sp"
-        android:textColor="@color/colorAccent"/>
+        android:textColor="@color/blanc"/>
 
 
 </RelativeLayout>

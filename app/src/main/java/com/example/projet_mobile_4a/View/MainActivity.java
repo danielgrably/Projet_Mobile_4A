@@ -61,12 +61,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                 } else if (tab.getPosition() == 2) {
                     toolbar.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
-                            R.color.or));
+                            R.color.bleu));
                     tabLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
-                            R.color.or));
+                            R.color.bleu));
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this,
-                                R.color.or));
+                                R.color.bleu));
                     }
                 } else {
                     toolbar.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
