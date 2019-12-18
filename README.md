@@ -1,6 +1,4 @@
-# Projet_Mobile_4A
-
-# Application mobile : CALENDAR
+# Projet_Mobile_4A: APPLICATION CALENDAR
 
 ## Développeur (4A)
 
@@ -11,7 +9,7 @@
 
 ## Présentation
 
-Simple projet démontrant l'utilisation d'API REST et de recyclerview dans une application android codé en Java.
+Ce projet a pour principaux buts l'utilisation d'appel WebService à une API REST et de liste de view dans une application android, scindée en Fragments, codé en Java.
 
 Cette application affiche le calendrier des chabbats et fêtes juives en utilisant l'API suivante disponible sur Github : "https://www.hebcal.com/home/195/jewish-calendar-rest-api". Par ailleurs, toujours avec cette API, nous pouvons afficher les montées du chabat. En effet, chaque chabbat, nous lisons une section des livres du pentateuque, de façons à les finir en un ans. Cette section est subdivisée en 7 montées (sous section). Enfin, le "maftir" reprend les derniers versets de la septième montée. Puis la haftarah est constituée d'un passage tiré des livres des prophètes. 
 
@@ -21,7 +19,7 @@ Cette application affiche le calendrier des chabbats et fêtes juives en utilisa
 ## Prérequis
 
 - Installation d'Android Studio</br>
-Ce projet est le premier que nous réalisons sous Android Studio, il n'y avait donc pas d'autres prérequis.
+Ce projet est le deuxième que je réalise sous Android Studio, il n'y avait pas d'autres prérequis.
 
 
 &nbsp;
@@ -73,17 +71,17 @@ Outre le titre, trois boutons sont proposés à l'utilsateur.
 - Le troisième, "Créateur" affiche un toast avec mon nom.
 
 
-<img src="img_readme/ecran.png" width="200" alt="ecran accueil">
+<img src="img_readme/Frag_Menu.png" width="200" alt="ecran accueil">
 
-### Seconde activité
-
-- Affiche la liste des prochains évènement avec leur catégorie, leur noms en anglais et en hébreu, ainsi que leur date.
-
-<img src="img_readme/list_1.png" width="200" alt="liste évènement">   
-
-### Troisième activité
+### Second Fragment
 
 - Affiche la liste des montées des lectures hebdomadaires.
 
-<img src="img_readme/list_2.png" width="200" alt="liste montées">  
+<img src="img_readme/Frag_Chabbat.png" width="200" alt="liste évènement">   
+
+### Troisième FRagment
+
+- Affiche la liste des prochains évènement avec leur catégorie, leur noms en anglais et en hébreu, ainsi que leur date.
+
+<img src="img_readme/Frag_Calendrier.png" width="200" alt="liste montées">  
 
