@@ -4,8 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.example.projet_mobile_4a.View.CalendrierFragment;
 import com.example.projet_mobile_4a.View.ChabbatFragment;
-import com.example.projet_mobile_4a.View.HorairesFragment;
 import com.example.projet_mobile_4a.View.MenuFragment;
 
 public class PageAdapter extends FragmentPagerAdapter {
@@ -23,9 +23,9 @@ public class PageAdapter extends FragmentPagerAdapter {
             case 0:
                 return new MenuFragment();
             case 1:
-                return new HorairesFragment();
-            case 2:
                 return new ChabbatFragment();
+            case 2:
+                return new CalendrierFragment();
             default:
                 return null;
         }

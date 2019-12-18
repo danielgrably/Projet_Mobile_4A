@@ -19,9 +19,10 @@ public class ScreenSlide extends FragmentActivity {
         setContentView(R.layout.activity_main);
 
         // Instantiate a ViewPager and a PagerAdapter.
-        mPager = (ViewPager) findViewById(R.id.viewPager);
+        mPager = findViewById(R.id.viewPager);
         pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(pagerAdapter);
+        mPager.setPageTransformer(true, new ZoomOutPageTransformer());
     }
 
     @Override

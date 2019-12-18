@@ -7,13 +7,14 @@ import android.util.Log;
 
 import com.example.projet_mobile_4a.Model.Calendar;
 import com.example.projet_mobile_4a.Model.RestCalendarResponse;
-import com.example.projet_mobile_4a.View.ChabbatFragment;
+import com.example.projet_mobile_4a.View.CalendrierFragment;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,11 +29,11 @@ public class Cont {
 
 
     private List<Calendar> calendarList;
-    private ChabbatFragment view;
+    private CalendrierFragment view;
     private SharedPreferences sharedPreferences;
 
 
-    public Cont(ChabbatFragment view) {
+    public Cont(CalendrierFragment view) {
         this.view = view;
     }
 
@@ -49,7 +50,7 @@ public class Cont {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
-        sharedPreferences = view.getContext().getSharedPreferences(PREFS, Context.MODE_PRIVATE);
+        sharedPreferences = Objects.requireNonNull(view.getContext()).getSharedPreferences(PREFS, Context.MODE_PRIVATE);
 
         if (sharedPreferences.contains(LIST_KEY)) {
             String listJson = sharedPreferences.getString(LIST_KEY, null);
