@@ -78,11 +78,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         final String memo = selectedCalendar.getMemo();
         final String date = selectedCalendar.getDate();
 
-        holder.line_1.setText(category);
-        holder.line_2.setText(hebrew);
-        holder.line_3.setText(title);
-        holder.line_4.setText(date);
-        holder.line_5.setText(memo);
+        holder.line_1.setText(String.format("\tCatégorie : %s", category));
+        holder.line_2.setText("\t"+hebrew);
+        holder.line_3.setText(String.format("\tEvènement : %s", title));
+        holder.line_4.setText(String.format("\tDate: %s", date));
+        if(memo != null) {
+            holder.line_5.setText("\t" + memo);
+        }
+        else{holder.line_5.setText(memo);}
     }
 
     // Return the size of your dataset (invoked by the layout manager)

@@ -2,26 +2,33 @@ package com.example.projet_mobile_4a.View;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import com.example.projet_mobile_4a.Controler.PageAdapter;
 import com.example.projet_mobile_4a.R;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
-    Toolbar toolbar;
-    TabLayout tabLayout;
-    ViewPager viewPager;
-    PageAdapter pageAdapter;
-    TabItem tabMenu;
-    TabItem tabChabat;
-    TabItem tabHoraires;
+    private Toolbar toolbar;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+    private PageAdapter pageAdapter;
+    private TabItem tabMenu;
+    private TabItem tabChabat;
+    private TabItem tabHoraires;
+    private DrawerLayout mDrawerLayout;
     ActionBar actionBar;
 
     @Override
@@ -31,14 +38,14 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Calendar");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Calendar");
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 
         tabLayout = findViewById(R.id.tablayout);
         tabMenu = findViewById(R.id.tabMenu);
-        tabChabat = findViewById(R.id.tabChabbat);
-        tabHoraires = findViewById(R.id.tabHoraires);
+        tabChabat = findViewById(R.id.tabCalendrier);
+        tabHoraires = findViewById(R.id.tabChabbat);
         viewPager = findViewById(R.id.viewPager);
       //  tabLayout.setupWithViewPager(viewPager);
 
@@ -61,12 +68,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                 } else if (tab.getPosition() == 2) {
                     toolbar.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
-                            R.color.or));
+                            R.color.bleu));
                     tabLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
-                            R.color.or));
+                            R.color.bleu));
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this,
-                                R.color.or));
+                                R.color.bleu));
                     }
                 } else {
                     toolbar.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
@@ -92,8 +99,51 @@ public class MainActivity extends AppCompatActivity {
         });
           viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
-    }
+        // Create Navigation drawer and inflate layout
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        mDrawerLayout = findViewById(R.id.drawer);
 
+        // Adding menu icon to Toolbar
+        ActionBar supportActionBar = getSupportActionBar();
+        if (supportActionBar != null) {
+            supportActionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
+            supportActionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
+        // Set behavior of Navigation drawer
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    // This method will trigger on item Click of navigation menu
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                        // Set item in checked state
+                        menuItem.setChecked(true);
+                        // TODO: handle navigation
+                        // Closing drawer on item click
+                        mDrawerLayout.closeDrawers();
+                        return true;
+                    }
+                });
+
+
+
+    }
+/*
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        } else if (id == android.R.id.home) {
+            mDrawerLayout.openDrawer(GravityCompat.START);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+*/
 }
 
 
@@ -116,8 +166,8 @@ public class MainActivity extends AppCompatActivity {
 private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
         adapter.addFragment(new MenuFragment(), "Menu");
-        adapter.addFragment(new ChabbatFragment(), "Chabbat");
-        adapter.addFragment(new HorairesFragment(), "Horaires");
+        adapter.addFragment(new CalendrierFragment(), "Chabbat");
+        adapter.addFragment(new ChabbatFragment(), "Horaires");
         viewPager.setAdapter(adapter);
     }
 

@@ -10,30 +10,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.projet_mobile_4a.Controler.Cont_bis;
-import com.example.projet_mobile_4a.Controler.MyAdapter_bis;
+import com.example.projet_mobile_4a.Controler.Cont;
+import com.example.projet_mobile_4a.Controler.MyAdapter;
 import com.example.projet_mobile_4a.Model.Calendar;
 import com.example.projet_mobile_4a.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HorairesFragment extends Fragment {
+public class CalendrierFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
-    private Cont_bis controlller;
     private List<Calendar> calendarList = new ArrayList<>();
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         setHasOptionsMenu(true);
-        View view = inflater.inflate(R.layout.fragment_horaires, container, false);
-        recyclerView = view.findViewById(R.id.horaires_recycler_view);
+        View view = inflater.inflate(R.layout.fragment_calendrier, container, false);
+        recyclerView = view.findViewById(R.id.calendrier_recycler_view);
 
-        controlller = new Cont_bis(this);
+        Cont controlller = new Cont(this);
         controlller.onCreate();
         return view;
     }
@@ -42,9 +40,10 @@ public class HorairesFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         calendarList = list;
         // use a linear layout manager
-        layoutManager = new LinearLayoutManager(getContext());
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
-        mAdapter = new MyAdapter_bis(list);
+        //recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        mAdapter = new MyAdapter(calendarList);
         recyclerView.setAdapter(mAdapter);
         attachSwipeListener();
     }
@@ -67,5 +66,4 @@ public class HorairesFragment extends Fragment {
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
-
 }
