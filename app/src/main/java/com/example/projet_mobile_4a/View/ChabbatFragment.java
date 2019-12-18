@@ -1,56 +1,51 @@
 package com.example.projet_mobile_4a.View;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-import com.blogspot.atifsoftwares.animatoolib.Animatoo;
-import com.example.projet_mobile_4a.Controler.Cont_bis;
-import com.example.projet_mobile_4a.Controler.MyAdapter_bis;
+import com.example.projet_mobile_4a.Controler.Cont;
+import com.example.projet_mobile_4a.Controler.MyAdapter;
 import com.example.projet_mobile_4a.Model.Calendar;
 import com.example.projet_mobile_4a.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class ThirdActivity extends Activity {
+public class ChabbatFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private Cont_bis controlller;
+    private Cont controlller;
     private List<Calendar> calendarList = new ArrayList<>();
 
-
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_third);
-        recyclerView = findViewById(R.id.calendar_recycler_view);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        setHasOptionsMenu(true);
+        View view = inflater.inflate(R.layout.fragment_chabbat, container, false);
+        recyclerView = view.findViewById(R.id.chabbat_recycler_view);
 
-        controlller = new Cont_bis(this);
+        controlller = new Cont(this);
         controlller.onCreate();
+        return view;
     }
-
-
-    @Override
-    public void onBackPressed(){
-        super.onBackPressed();
-        Animatoo.animateSwipeRight(this);
-    }
-
 
     public void showList(List<Calendar> list) {
         recyclerView.setHasFixedSize(true);
         calendarList = list;
         // use a linear layout manager
-        layoutManager = new LinearLayoutManager(this);
+        layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
-        mAdapter = new MyAdapter_bis(list);
+        //recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        mAdapter = new MyAdapter(calendarList);
         recyclerView.setAdapter(mAdapter);
         attachSwipeListener();
     }
@@ -73,6 +68,4 @@ public class ThirdActivity extends Activity {
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
-
-
 }
