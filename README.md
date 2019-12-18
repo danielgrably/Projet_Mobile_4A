@@ -71,17 +71,17 @@ Outre le titre, trois boutons sont proposés à l'utilsateur.
 - Le troisième, "Créateur" affiche un toast avec mon nom.
 
 
-<img src="img_readme/Frag_Menu.png" width="200" alt="ecran accueil">
+<img src="img_readme/Frag_Menu.JPG" width="200" alt="Frag_Menu">
 
 ### Second Fragment
 
 - Affiche la liste des montées des lectures hebdomadaires.
 
-<img src="img_readme/Frag_Chabbat.png" width="200" alt="liste évènement">   
+<img src="img_readme/Frag_Chabbat.JPG" width="200" alt="Frag_Chabbat">   
 
 ### Troisième FRagment
 
 - Affiche la liste des prochains évènement avec leur catégorie, leur noms en anglais et en hébreu, ainsi que leur date.
 
-<img src="img_readme/Frag_Calendrier.png" width="200" alt="liste montées">  
+<img src="img_readme/Frag_Calendrier.JPG" width="200" alt="Frag_Calendrier">  
 
