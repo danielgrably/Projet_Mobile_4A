@@ -20,21 +20,26 @@ Cette application affiche le calendrier des chabbats et fêtes juives en utilisa
 
 - Installation d'Android Studio</br>
 Ce projet est le deuxième que je réalise sous Android Studio, il n'y avait pas d'autres prérequis.
+- J'ai donc récupérer le précédent projet, disponible dans le répertoire https://github.com/danielgrably/Calendar.</br>
+Je l'ai retravaillé pour lui accorder de nouvelles fonctionnalitées 
 
 
 &nbsp;
 
 ## Consignes respectées : 
 
-- Deux écrans; trois activités
-- Recycler View
+- Trois Fragments
+- RecyclerView, DrawerLayout, LinearLayout, AppBar, ToolBar 
 - Appels WebService à une API Rest
 - Architecture MVC
-- Animation entre deux écrans
+- Material Design
+- Sauvegarde en cache
 - Autres fonctionnalités 
-  - Changement logo de l'application 
+  - Changement logo de l'application + logos sur les Tab 
   - Supression élèment par swip
   - Toast message
+  - Changement de fond et animation lors des déplacements entre les Fragments
+  - Déplacement en swippant
 
 
 &nbsp;
@@ -47,15 +52,16 @@ Ce projet est le deuxième que je réalise sous Android Studio, il n'y avait pas
 * RestCalendarResponse
 
 ### View
-* MainActivity : ----------->*Pour l'écran d'accueil, avec les fonctions appelées pour les trois boutons*
-* SecondActivity : -------->*Affichage du calendrier* 
-* ThirdActivity : ---------->*Affichage des montées et lectures*
+* MainActivity : ----------->*Pour l'écran d'accueil, fonction pour les déplacements entre fragments définitions des divers éléments Toolbar, TabLayout, TabItem, DrawerLayout, ViewPager*
+* MenuFragment : -------->*Affichage du Fragment menu avec le Toast* 
+* ChabbatFragment : ---------->*Affichage du Fragment Chabbat contenant la liste des montées et lectures*
+* CalendrierFragment : ---------->*Affichage du Fragment Calendrier contenant la liste des évènements à venir*
 
 ### Controler
-* Cont : -------------------->*Constructeur pour la SecondActivity*
-* Cont_bis : ---------------->*Constructeur pour la ThirdActivity*
-* MyAdapter : ------------->*Adapteur pour la SecondActivity*
-* MyAdapter_bis:----------->*Adapteur pour la ThirdActivity*
+* Cont : -------------------->*Constructeur pour le CalendrierFragment *
+* Cont_bis : ---------------->*Constructeur pour le ChabbatFragment *
+* MyAdapter : ------------->*Adapteur pour le CalendrierFragment*
+* MyAdapter_bis:----------->*Adapteur pour le ChabbatFragment*
 * RestCalendarAPI
 
 &nbsp;
@@ -65,10 +71,10 @@ Ce projet est le deuxième que je réalise sous Android Studio, il n'y avait pas
 ### Premier écran 
 
 L'écran qui s'affiche au démarrage est l'écran d'accueil. Au commencement du chabbat ou des fêtes, nous avons l'habitude d'allumer deux bougies, c'est ce qui est représenté par le fond d'écran.</br>
-Outre le titre, trois boutons sont proposés à l'utilsateur.
-- Le premier, "Calendrier et horaires" ouvre une seconde activité affichant les prochains évènements.
-- Le second, "Montées chabbat" ouvre une troisième activité affichant la répartition des montées pour la lecture de chabat.
-- Le troisième, "Créateur" affiche un toast avec mon nom.
+Outre le titre, trois items dominant la page sont proposés à l'utilsateur.
+- Le premier, "Menu" c'est le fragment sur lequel il se trouve lors de l'ouverture de l'application. 
+- Le second, "Chabbat" ouvre le deuxième fragment affichant la répartition des montées pour la lecture de chabat.
+- Le troisième, "Créateur" ouvre le troisième fragment affichant les prochains évènements.
 
 
 <img src="img_readme/Frag_Menu.JPG" width="200" alt="Frag_Menu">
@@ -79,9 +85,9 @@ Outre le titre, trois boutons sont proposés à l'utilsateur.
 
 <img src="img_readme/Frag_Chabbat.JPG" width="200" alt="Frag_Chabbat">   
 
-### Troisième FRagment
+### Troisième Fragment
 
-- Affiche la liste des prochains évènement avec leur catégorie, leur noms en anglais et en hébreu, ainsi que leur date.
+- Affiche la liste des prochains évènements avec leur catégorie, leur noms en anglais et en hébreu, ainsi que leur date.
 
 <img src="img_readme/Frag_Calendrier.JPG" width="200" alt="Frag_Calendrier">  
 
