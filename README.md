@@ -44,7 +44,7 @@ Je l'ai retravaillé pour lui accorder de nouvelles fonctionnalitées.
   - Supression élèment par swip
   - Toast message
   - Changement de fond et animation lors des déplacements entre les Fragments
-  - Déplacement en swippant
+  - Déplacement en scrollant 
 
 
 &nbsp;
@@ -84,7 +84,7 @@ Outre le titre, trois items dominant la page sont proposés à l'utilsateur.
 
 <img src="img_readme/Frag_Menu.JPG" width="200" alt="Frag_Menu">
 
-### Second Fragment
+### Deuxième Fragment
 
 Affiche la liste des montées des lectures hebdomadaires.
 
