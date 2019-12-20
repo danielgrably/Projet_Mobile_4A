@@ -1,6 +1,7 @@
 package com.example.projet_mobile_4a.View;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,12 +16,12 @@ public class MenuFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         setHasOptionsMenu(true);
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
-        Button button = (Button) view.findViewById(R.id.createur_button);
+        Button button = view.findViewById(R.id.createur_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

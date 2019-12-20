@@ -1,5 +1,6 @@
 package com.example.projet_mobile_4a.View;
 
+import android.app.Fragment;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,32 +8,35 @@ import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 
 import com.example.projet_mobile_4a.Controler.PageAdapter;
 import com.example.projet_mobile_4a.R;
 
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    // Make sure to be using androidx.appcompat.app.ActionBarDrawerToggle version.
+   // private ActionBarDrawerToggle drawerToggle;
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private PageAdapter pageAdapter;
-    private TabItem tabMenu;
-    private TabItem tabChabat;
-    private TabItem tabHoraires;
     private DrawerLayout mDrawerLayout;
-    ActionBar actionBar;
+    private NavigationView nvDrawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -41,17 +45,25 @@ public class MainActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setTitle("Calendar");
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+        // This will display an Up icon (<-), we will replace it with hamburger later
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         tabLayout = findViewById(R.id.tablayout);
-        tabMenu = findViewById(R.id.tabMenu);
-        tabChabat = findViewById(R.id.tabCalendrier);
-        tabHoraires = findViewById(R.id.tabChabbat);
+        TabItem tabMenu = findViewById(R.id.tabMenu);
+        TabItem tabChabat = findViewById(R.id.tabCalendrier);
+        TabItem tabHoraires = findViewById(R.id.tabChabbat);
         viewPager = findViewById(R.id.viewPager);
-      //  tabLayout.setupWithViewPager(viewPager);
 
-        pageAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(pageAdapter);
 
+        // Find our drawer view
+        nvDrawer = findViewById(R.id.nvView);
+        // Setup drawer
+        if (nvDrawer!= null) {
+            setupDrawerContent(nvDrawer);
+        }
+        mDrawerLayout = findViewById(R.id.drawer);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -99,9 +111,6 @@ public class MainActivity extends AppCompatActivity {
         });
           viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
-        // Create Navigation drawer and inflate layout
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        mDrawerLayout = findViewById(R.id.drawer);
 
         // Adding menu icon to Toolbar
         ActionBar supportActionBar = getSupportActionBar();
@@ -110,95 +119,85 @@ public class MainActivity extends AppCompatActivity {
             supportActionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        // Set behavior of Navigation drawer
+    }
+
+    private void setupDrawerContent(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
-                    // This method will trigger on item Click of navigation menu
                     @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                        // Set item in checked state
-                        menuItem.setChecked(true);
-                        // TODO: handle navigation
-                        // Closing drawer on item click
-                        mDrawerLayout.closeDrawers();
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        selectDrawerItem(menuItem);
                         return true;
                     }
                 });
-
-
-
     }
-/*
+
+    public void selectDrawerItem(MenuItem menuItem) {
+        // Create a new fragment and specify the fragment to show based on nav item clicked
+        Fragment fragment = null;
+        Class fragmentClass = null;
+        switch(menuItem.getItemId()) {
+            case R.id.nav_first_fragment:
+                fragment = new Fragment();
+                break;
+            case R.id.nav_second_fragment:
+                fragment = new Fragment();
+                break;
+            case R.id.nav_third_fragment:
+                fragment = new Fragment();
+                break;
+            case R.id.nav_informations:
+                fragment = new Fragment();
+                break;
+            case R.id.nav_credits:
+                fragment = new Fragment();
+                break;
+
+            default:
+                fragmentClass = MenuFragment.class;
+        }
+
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+       // this.nvDrawer = findViewById(R.id.nvView);
+        nvDrawer.setNavigationItemSelectedListener(this);
+
+        // Insert the fragment by replacing any existing fragment
+        LayoutInflater inflater = getLayoutInflater();
+        LinearLayout container = findViewById(R.id.content_frame);
+        inflater.inflate(R.layout.activity_main, container);
+        getFragmentManager().beginTransaction()
+                .replace(R.id.content_frame, fragment)
+                .commit();
+
+
+        // Highlight the selected item has been done by NavigationView
+        menuItem.setChecked(true);
+        // Set action bar title
+        setTitle(menuItem.getTitle());
+        // Close the navigation drawer
+        mDrawerLayout.closeDrawers();
+    }
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        } else if (id == android.R.id.home) {
-            mDrawerLayout.openDrawer(GravityCompat.START);
+        // The action bar home/up action should open or close the drawer.
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
-*/
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        return false;
+    }
 }
-
-
-/*
-
-public class MainActivity extends AppCompatActivity {
-
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(getResources().getString(R.string.app_name));
-        setSupportActionBar(toolbar);
-
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
-        setupViewPager(viewPager);
-       /* PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPager.setAdapter(pageAdapter);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
-
-private void setupViewPager(ViewPager viewPager) {
-        Adapter adapter = new Adapter(getSupportFragmentManager());
-        adapter.addFragment(new MenuFragment(), "Menu");
-        adapter.addFragment(new CalendrierFragment(), "Chabbat");
-        adapter.addFragment(new ChabbatFragment(), "Horaires");
-        viewPager.setAdapter(adapter);
-    }
-
-    static class Adapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
-
-
-        public Adapter(FragmentManager manager) {
-            super(manager);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
-
-        public void addFragment(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
-        }
-    }
-
-}*/

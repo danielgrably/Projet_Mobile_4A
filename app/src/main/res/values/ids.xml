@@ -17,4 +17,5 @@
     <item name="textView" type="id" />
     <item name="createur_button" type="id" />
     <item name="calendrier_button" type="id" />
+    <item name="drawer_layout" type="id" />
 </resources>

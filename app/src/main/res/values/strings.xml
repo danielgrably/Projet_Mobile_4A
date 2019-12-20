@@ -10,5 +10,9 @@
     <string name="menu">Menu</string>
     <string name="chabbat">Chabbat</string>
     <string name="calendrier">Calendrier</string>
+    <string name="cr_dits">Crédits</string>
+    <string name="informations">Informations</string>
+    <string name="autres_items">Autres items</string>
+    <string name="calendar">Calendar</string>
 
 </resources>
