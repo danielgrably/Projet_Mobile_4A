@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_first_fragment"
+            android:icon="@drawable/ic_one"
+            android:title="@string/menu" />
+        <item
+            android:id="@+id/nav_second_fragment"
+            android:icon="@drawable/ic_two"
+            android:title="@string/chabbat" />
+        <item
+            android:id="@+id/nav_third_fragment"
+            android:icon="@drawable/ic_three"
+            android:title="@string/calendrier" />
+    </group>
+    <item android:title="@string/autres_items">
+        <menu>
+            <item
+                android:icon="@drawable/vignette"
+                android:title="@string/informations"
+                android:id="@+id/nav_informations"/>
+            <item
+                android:icon="@drawable/vignette_bis"
+                android:title="@string/cr_dits"
+                android:id="@+id/nav_credits"/>
+        </menu>
+    </item>
+</menu>

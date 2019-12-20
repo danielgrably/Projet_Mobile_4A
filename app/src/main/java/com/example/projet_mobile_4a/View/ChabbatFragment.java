@@ -21,8 +21,6 @@ import java.util.List;
 public class ChabbatFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
-    private Cont_bis controlller;
     private List<Calendar> calendarList = new ArrayList<>();
 
     @Override
@@ -33,7 +31,7 @@ public class ChabbatFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_chabbat, container, false);
         recyclerView = view.findViewById(R.id.horaires_recycler_view);
 
-        controlller = new Cont_bis(this);
+        Cont_bis controlller = new Cont_bis(this);
         controlller.onCreate();
         return view;
     }
@@ -42,7 +40,7 @@ public class ChabbatFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         calendarList = list;
         // use a linear layout manager
-        layoutManager = new LinearLayoutManager(getContext());
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         mAdapter = new MyAdapter_bis(list);
         recyclerView.setAdapter(mAdapter);
