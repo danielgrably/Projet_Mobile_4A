@@ -111,3 +111,14 @@ Cela m'a permis de présenter un meilleur Design et d'intégrer les différents 
 - Concernant les erreurs également, j'ai utilisé les retours de Logcat pour résoudre les problèmes ou bugs potentiels. Là aussi, en prenant de l'expérience, on comprend mieux quelles sont les fautes et comment les corriger. 
 - Enfin, ce n'est pas la première fois que j'utlise GitHub pour déposer un projet, je commence à en prendre les automatismes. Après avoir chargé  le projet de troisième année sur la branche master, j'ai créé une branche dev pour avancer sur l'application. J'ai essayé de bien nommer mes commits afin de comprendre ce qu'ils ont apporté comme modifications. A la fin, il ne manqua plus que de "merger" les branches pour que la master soit à jour.
 
+
+
+&nbsp;
+
+## Potentielles améliorations:
+Au fur et à mesure de l'avancement du projet, je réfléchissais à ce que je voulais ajoutter à mon application. 
+Je n'ai pas eu le temps de tout faire, mais j'ai noté quelques fonctionnalités qui pourraient être apportées.
+- J'ai commencé à implémenter une NavBar qui permet d'accéder aux fragments ou à des messages. Elle s'affiche bien, mais je n'ai pas réussi le passage entre celle-ci et les fragments.  
+- Le fragment calendrier se présente comme une liste d'évènements. Il serait intéresser d'ajouter une barre de recherches qui filtres parmi ces évènements.
+- De plus, on pourrait proposer à l'utilisateur de rajouter des évènements par lui même.
+
